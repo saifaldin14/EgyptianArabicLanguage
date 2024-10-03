@@ -1,6 +1,6 @@
 import re
 
-# Step 1: Define the slang-to-Python keyword mapping
+# Define the slang-to-Python keyword mapping
 slang_to_python = {
     'iza': 'if',
     'ellie iza': 'elif',
@@ -9,7 +9,7 @@ slang_to_python = {
     'lama': 'while',
     'esmi': 'def',
     'raja3': 'return',
-    'ekteb': 'print',
+    'tabe3': 'print',
     'sheel': 'input',
     'akbar': '>',
     'azghar': '<',
@@ -26,52 +26,59 @@ slang_to_python = {
     '//': '#',  # Comments
 }
 
-# Step 2: A function to translate slang code into Python code
+# Function to translate slang code into Python code
 def translate_slang_to_python(slang_code):
-    # Handle multiline translation to preserve indentation
     python_code = []
+    indentation_level = 0
+    
     for line in slang_code.splitlines():
-        translated_line = line
+        # Remove leading/trailing whitespace and preserve indentation
+        stripped_line = line.lstrip()
+        leading_spaces = len(line) - len(stripped_line)
+        translated_line = stripped_line
+        
         # Replace slang keywords with Python equivalents
         for slang_word, python_word in slang_to_python.items():
             translated_line = re.sub(rf'\b{slang_word}\b', python_word, translated_line)
-        python_code.append(translated_line)
+        
+        # Add the translated line to the Python code list with correct indentation
+        python_code.append(" " * leading_spaces + translated_line)
     
     return "\n".join(python_code)
 
-# Step 3: Function to execute the translated Python code
+# Function to execute the translated Python code
 def execute_translated_code(python_code):
     try:
         exec(python_code)
     except Exception as e:
         print(f"Error executing code: {str(e)}")
 
-# Step 4: The full parser function
+# The full parser function
 def slang_parser(slang_code):
-    # Step 4.1: Translate the slang code to Python
+    # Step 1: Translate the slang code to Python
     python_code = translate_slang_to_python(slang_code)
     
-    # Step 4.2: Print out the translated code for reference
+    # Step 2: Print out the translated code for reference
     print("Translated Python Code:\n")
     print(python_code)
     
-    # Step 4.3: Execute the translated Python code
+    # Step 3: Execute the translated Python code
     print("\nOutput:\n")
     execute_translated_code(python_code)
 
 # Example Slang Code
 slang_code = """
 esmi salaam():
-    ekteb("Marhaba ya 3alam!")
+    tabe3("Marhaba ya 3alam!")
     raja3 "Salam"
 
 khaliha ism = sheel("Shu esmak? ")
-ekteb(f"Ahlan, {ism}")
+tabe3(f"Ahlan, {ism}")
 
-iza ism mitl "Ahmad":
-    ekteb("Ya hala ya Ahmad!")
+iza (ism mitl "Ahmad"):
+    tabe3("Ya hala ya Ahmad!")
 aw:
-    ekteb("Ma a3rafak!")
+    tabe3("Ma a3rafak!")
 
 salaam()
 """
