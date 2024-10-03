@@ -87,16 +87,16 @@ def execute_local_test():
 
     slang_code = """
 esmi salaam():
-    ekteb("Marhaba ya 3alam!")
+    ekteb("Ahlan wa sahlan ya 3alam!")
     raga3 "Salam"
 
-ism = sheel("Shu esmak? ")
+ism = sheel("Esmak eh? ")
 ekteb(f"Ahlan, {ism}")
 
 lw (ism zy "Ahmad"):
-    ekteb("Ya hala ya Ahmad!")
+    ekteb("A7la esm!")
 mafee4:
-    ekteb("Ma a3rafak!")
+    ekteb("Ma3rafak4!")
 
 salaam()
     """
