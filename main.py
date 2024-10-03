@@ -2,26 +2,26 @@ import re
 
 # Define the slang-to-Python keyword mapping
 slang_to_python = {
-    'iza': 'if',
-    'ellie iza': 'elif',
-    'lw mafeesh': 'else',
-    'min': 'for',
+    'lw': 'if',
+    'gheir da': 'elif',
+    'mafee4': 'else',
+    'ebtidi min': 'for',
     'lama': 'while',
     'esmi': 'def',
-    'raja3': 'return',
-    'tabe3': 'print',
+    'raga3': 'return',
+    'ekteb': 'print',
     'sheel': 'input',
     'akbar': '>',
     'azghar': '<',
-    'mitl': '==',
-    'mish mitl': '!=',
+    'zy': '==',
+    'mi4 zy': '!=',
     'wa': 'and',
     'aw': 'or',
-    'mish': 'not',
-    'jarrib': 'try',
-    'iza ma zabat': 'except',
-    'taqsim': 'class',
-    'eshmelo': '__init__',
+    'mi4': 'not',
+    'garrab': 'try',
+    'ma zabat4': 'except',
+    '7aga': 'class',
+    'bedaya': '__init__',
     '//': '#',  # Comments
 }
 
@@ -94,16 +94,16 @@ def execute_local_test():
     # Example Slang Code
     slang_code = """
 esmi salaam():
-    tabe3("Marhaba ya 3alam!")
-    raja3 "Salam"
+    ekteb("Marhaba ya 3alam!")
+    raga3 "Salam"
 
 ism = sheel("Shu esmak? ")
-tabe3(f"Ahlan, {ism}")
+ekteb(f"Ahlan, {ism}")
 
-iza (ism mitl "Ahmad"):
-    tabe3("Ya hala ya Ahmad!")
-lw mafeesh:
-    tabe3("Ma a3rafak!")
+lw (ism zy "Ahmad"):
+    ekteb("Ya hala ya Ahmad!")
+mafee4:
+    ekteb("Ma a3rafak!")
 
 salaam()
     """
