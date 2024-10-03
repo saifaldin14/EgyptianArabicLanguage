@@ -25,7 +25,6 @@ slang_to_python = {
     '//': '#',  # Comments
 }
 
-# Translate slang code into Python code
 def translate(slang_code):
     python_code = []
     
@@ -49,7 +48,7 @@ def execute_translated_code(python_code):
         print(f"Error executing code: {str(e)}")
 
 # Parser function
-def slang_parser(slang_code):
+def arabic_parser(slang_code):
     python_code = translate(slang_code)
     
     print("Translated Python Code:\n")
@@ -59,7 +58,7 @@ def slang_parser(slang_code):
     execute_translated_code(python_code)
 
 # CLI to allow slang file execution
-def slang_parser_cli(file_name):
+def arabic_parser_cli(file_name):
     if not file_name.endswith('.arsl'):
         print("Invalid file extension. Please provide a .arsl file.")
         return
@@ -71,16 +70,16 @@ def slang_parser_cli(file_name):
         print(f"File '{file_name}' not found.")
         return
 
-    slang_parser(slang_code)
+    arabic_parser(slang_code)
 
 # REPL for interactive input
 def slang_repl():
-    print("Welcome to the Arabic Slang REPL. Type your code below. Type 'exit' to quit.")
+    print("Welcome to the Egyptian Arabic REPL. Type your code below. Type 'exit' to quit.")
     while True:
         slang_code = input(">>> ")
         if slang_code.lower() == 'exit':
             break
-        slang_parser(slang_code)
+        arabic_parser(slang_code)
 
 def execute_local_test():
     slang_repl()
@@ -101,11 +100,11 @@ mafee4:
 salaam()
     """
 
-    slang_parser(slang_code)
+    arabic_parser(slang_code)
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1:
-        slang_parser_cli(sys.argv[1])
+    if len(sys.argv) > 1: # There's a file
+        arabic_parser_cli(sys.argv[1]) # Execute the parser with a file
     else:
-        execute_local_test()
+        execute_local_test() # Just run the local test
