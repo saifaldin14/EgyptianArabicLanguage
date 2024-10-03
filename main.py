@@ -25,46 +25,40 @@ slang_to_python = {
     '//': '#',  # Comments
 }
 
-# Function to translate slang code into Python code
+# Translate slang code into Python code
 def translate_slang_to_python(slang_code):
     python_code = []
     
     for line in slang_code.splitlines():
-        # Remove leading/trailing whitespace and preserve indentation
         stripped_line = line.lstrip()
         leading_spaces = line[:len(line) - len(stripped_line)]  # preserve the leading spaces (indentation)
         translated_line = stripped_line
         
-        # Replace slang keywords with Python equivalents
         for slang_word, python_word in slang_to_python.items():
             translated_line = re.sub(rf'\b{slang_word}\b', python_word, translated_line)
         
-        # Add the translated line to the Python code list with correct indentation
         python_code.append(leading_spaces + translated_line)
     
     return "\n".join(python_code)
 
-# Function to execute the translated Python code
+# Execute the translated Python code
 def execute_translated_code(python_code):
     try:
         exec(python_code)
     except Exception as e:
         print(f"Error executing code: {str(e)}")
 
-# The full parser function
+# Parser function
 def slang_parser(slang_code):
-    # Step 1: Translate the slang code to Python
     python_code = translate_slang_to_python(slang_code)
     
-    # Step 2: Print out the translated code for reference
     print("Translated Python Code:\n")
     print(python_code)
     
-    # Step 3: Execute the translated Python code
     print("\nOutput:\n")
     execute_translated_code(python_code)
 
-# Command-line interface to allow slang file execution
+# CLI to allow slang file execution
 def slang_parser_cli(file_name):
     if not file_name.endswith('.arsl'):
         print("Invalid file extension. Please provide a .arsl file.")
@@ -91,7 +85,6 @@ def slang_repl():
 def execute_local_test():
     slang_repl()
 
-    # Example Slang Code
     slang_code = """
 esmi salaam():
     ekteb("Marhaba ya 3alam!")
@@ -108,14 +101,11 @@ mafee4:
 salaam()
     """
 
-    # Run the parser
     slang_parser(slang_code)
 
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
-        # If a file is provided, run the slang parser on the file
         slang_parser_cli(sys.argv[1])
     else:
-        # Otherwise, start the REPL
         execute_local_test()
