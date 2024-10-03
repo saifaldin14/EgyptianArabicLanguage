@@ -62,16 +62,16 @@ def slang_parser(slang_code):
 # Example Slang Code
 slang_code = """
 esmi salaam():
-    tabe3("Marhaba ya 3alam!")
+    ekteb("Marhaba ya 3alam!")
     raja3 "Salam"
 
 khaliha ism = sheel("Shu esmak? ")
-tabe3(f"Ahlan, {ism}")
+ekteb(f"Ahlan, {ism}")
 
-iza (ism mitl "Ahmad"):
-    tabe3("Ya hala ya Ahmad!")
+iza ism mitl "Ahmad":
+    ekteb("Ya hala ya Ahmad!")
 aw:
-    tabe3("Ma a3rafak!")
+    ekteb("Ma a3rafak!")
 
 salaam()
 """
