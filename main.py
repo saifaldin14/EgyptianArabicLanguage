@@ -1,6 +1,6 @@
 import re
 
-# Define the slang-to-Python keyword mapping
+# Define keyword mapping
 slang_to_python = {
     'lw': 'if',
     'gheir da': 'elif',
