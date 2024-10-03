@@ -1,0 +1,13 @@
+esmi salaam():
+    tabe3("Marhaba ya 3alam!")
+    raja3 "Salam"
+
+ism = sheel("Shu esmak? ")
+tabe3(f"Ahlan, {ism}")
+
+iza (ism mitl "Ahmad"):
+    tabe3("Ya hala ya Ahmad!")
+lw mafeesh:
+    tabe3("Ma a3rafak!")
+
+salaam()
