@@ -66,8 +66,17 @@ def slang_parser(slang_code):
 
 # Command-line interface to allow slang file execution
 def slang_parser_cli(file_name):
-    with open(file_name, 'r') as file:
-        slang_code = file.read()
+    if not file_name.endswith('.arsl'):
+        print("Invalid file extension. Please provide a .arsl file.")
+        return
+    
+    try:
+        with open(file_name, 'r') as file:
+            slang_code = file.read()
+    except FileNotFoundError:
+        print(f"File '{file_name}' not found.")
+        return
+
     slang_parser(slang_code)
 
 # REPL for interactive input
@@ -79,10 +88,11 @@ def slang_repl():
             break
         slang_parser(slang_code)
 
-slang_repl()
+def execute_local_test():
+    slang_repl()
 
-# Example Slang Code
-slang_code = """
+    # Example Slang Code
+    slang_code = """
 esmi salaam():
     tabe3("Marhaba ya 3alam!")
     raja3 "Salam"
@@ -96,7 +106,16 @@ lw mafeesh:
     tabe3("Ma a3rafak!")
 
 salaam()
-"""
+    """
 
-# Run the parser
-slang_parser(slang_code)
+    # Run the parser
+    slang_parser(slang_code)
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        # If a file is provided, run the slang parser on the file
+        slang_parser_cli(sys.argv[1])
+    else:
+        # Otherwise, start the REPL
+        execute_local_test()
