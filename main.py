@@ -4,7 +4,7 @@ import re
 slang_to_python = {
     'iza': 'if',
     'ellie iza': 'elif',
-    'aw': 'else',
+    'lw mafeesh': 'else',
     'min': 'for',
     'lama': 'while',
     'esmi': 'def',
@@ -18,7 +18,6 @@ slang_to_python = {
     'wa': 'and',
     'aw': 'or',
     'mish': 'not',
-    'khaliha': '',  # Variables don't need keywords in Python
     'jarrib': 'try',
     'iza ma zabat': 'except',
     'taqsim': 'class',
@@ -29,12 +28,11 @@ slang_to_python = {
 # Function to translate slang code into Python code
 def translate_slang_to_python(slang_code):
     python_code = []
-    indentation_level = 0
     
     for line in slang_code.splitlines():
         # Remove leading/trailing whitespace and preserve indentation
         stripped_line = line.lstrip()
-        leading_spaces = len(line) - len(stripped_line)
+        leading_spaces = line[:len(line) - len(stripped_line)]  # preserve the leading spaces (indentation)
         translated_line = stripped_line
         
         # Replace slang keywords with Python equivalents
@@ -42,7 +40,7 @@ def translate_slang_to_python(slang_code):
             translated_line = re.sub(rf'\b{slang_word}\b', python_word, translated_line)
         
         # Add the translated line to the Python code list with correct indentation
-        python_code.append(" " * leading_spaces + translated_line)
+        python_code.append(leading_spaces + translated_line)
     
     return "\n".join(python_code)
 
@@ -72,12 +70,12 @@ esmi salaam():
     tabe3("Marhaba ya 3alam!")
     raja3 "Salam"
 
-khaliha ism = sheel("Shu esmak? ")
+ism = sheel("Shu esmak? ")
 tabe3(f"Ahlan, {ism}")
 
 iza (ism mitl "Ahmad"):
     tabe3("Ya hala ya Ahmad!")
-aw:
+lw mafeesh:
     tabe3("Ma a3rafak!")
 
 salaam()
