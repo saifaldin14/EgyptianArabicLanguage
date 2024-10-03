@@ -26,7 +26,7 @@ slang_to_python = {
 }
 
 # Translate slang code into Python code
-def translate_slang_to_python(slang_code):
+def translate(slang_code):
     python_code = []
     
     for line in slang_code.splitlines():
@@ -50,7 +50,7 @@ def execute_translated_code(python_code):
 
 # Parser function
 def slang_parser(slang_code):
-    python_code = translate_slang_to_python(slang_code)
+    python_code = translate(slang_code)
     
     print("Translated Python Code:\n")
     print(python_code)
