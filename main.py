@@ -64,6 +64,23 @@ def slang_parser(slang_code):
     print("\nOutput:\n")
     execute_translated_code(python_code)
 
+# Command-line interface to allow slang file execution
+def slang_parser_cli(file_name):
+    with open(file_name, 'r') as file:
+        slang_code = file.read()
+    slang_parser(slang_code)
+
+# REPL for interactive input
+def slang_repl():
+    print("Welcome to the Arabic Slang REPL. Type your code below. Type 'exit' to quit.")
+    while True:
+        slang_code = input(">>> ")
+        if slang_code.lower() == 'exit':
+            break
+        slang_parser(slang_code)
+
+slang_repl()
+
 # Example Slang Code
 slang_code = """
 esmi salaam():
