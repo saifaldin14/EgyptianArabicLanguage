@@ -1,2 +1,2 @@
-# ArabicSlang
+# Egyptian Arabic Programming Language
  
